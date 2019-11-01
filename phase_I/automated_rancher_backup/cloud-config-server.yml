@@ -1,0 +1,5 @@
+#cloud-config
+runcmd:
+- apt-get -y update && apt-get -y install docker.io
+- usermod -aG docker ubuntu
+final_message: "The system is finally up, after $UPTIME seconds"
