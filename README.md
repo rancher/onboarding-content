@@ -32,10 +32,10 @@ This repo contains practical examples of setting up Rancher according to the out
 ### PHASE III
 [3.1 Log Collection for Rancher and Kubernetes Cluster](./phase_III/logging.md)
 
-[3.2 Integration with Registry and Image Scanning Tools](./hase_III/registry.md)
+[3.2 Integration with Registry and Image Scanning Tools](./phase_III/registry.md)
 
-[3.3 Ingress and DNS Configured](./hase_III/ingress_dns.md)
+[3.3 Ingress and DNS Configured](./phase_III/ingress_dns.md)
 
-[3.4 Configuration of Storage Classes]((./hase_III/storage.md))
+[3.4 Configuration of Storage Classes]((./phase_III/storage.md))
 
-[3.5 Helm Catalog Setup](./hase_III/catalog.md)
+[3.5 Helm Catalog Setup](./phase_III/catalog.md)
