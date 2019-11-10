@@ -10,7 +10,7 @@ This repo contains practical examples of setting up Rancher according to the out
 
 1.3 Repeatable Upgrades of Rancher Server
 
-1.4 Automated Backup of Rancher
+[1.4 Automated Backup of Rancher](./phase_I/automated_rancher_backup)
 
 1.5 Monitoring of Rancher Server & RKE Cluster
 

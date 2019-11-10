@@ -1,10 +1,8 @@
 ## Setting up logging on K8S example
 
-This guide is intended to provide an example of how to setup a simple logging stack on K8S.
+This guide is intended to provide an example of how to setup a simple logging stack on K8S and use Rancher to setup log forwarding to that cluster
 
-We will review two options for setting up log aggregation on Rancher.
-
-### Option 1
+### Setup EFK stack
 We can choose one of the options available in the helm stable catalog, and development / operation teams are free to chose one which works for their use case scenario.
 
 ![](images/logging1.png)
@@ -20,6 +18,10 @@ For the purpose of this demo I will be choosing the ElasticSearch+FluentBit+Kiba
 There are few customisations available in the app, which need to be configured on the use case.
 
 ![](images/logging3.png)
+
+Because we will be using Rancher to manage log forwarding, we want to disbale FileBeat in this Helm chart by setting "Enable Filebeat" to "False".
+
+![](images/logging-filebeat.png)
 
 There are some key items to note:
 
@@ -71,22 +73,7 @@ For production grade logging stacks, the users need to decide on factors such as
 * persistence
 * rate of log ingestion, which in turn impacts elasticsearch JVM heap sizing.
 
-The EFK stack installs fluentbit as a daemon set.
-
-![](images/logging14.png)
-
-This allows it to stream all container logs to the ElasticSearch indexes.
-
-We can easily see this in action with a demo-app which just servces a static hello world page with a randomised delay.
-
-The container logs can be viewed in the rancher ui:
-![](images/logging12.png)
-
-The users can now go and search the same logs in the Kibana frontend as well:
-![](images/logging13.png)
-
-
-### Option 2
+## Configure Log Forwarding 
 Rancher itself can integrate with a number of common logging solutions.
 
 The logging can be setup at the cluster level or per project level.
@@ -118,3 +105,12 @@ After the changes are done, we can go to the Kibana search interface for our Ela
 
 Since the logging was enabeld at cluster scope we can see logs for all projects in our cluster.
 
+
+## Viewing Log Output
+Now that we've setup a logging stack and configured Rancher to foward logs, we can see log events from demo-app which just servces a static hello world page with a randomised delay.
+
+The container logs can be viewed in the rancher ui:
+![](images/logging12.png)
+
+The users can now go and search the same logs in the Kibana frontend as well:
+![](images/logging13.png)
