@@ -1,0 +1,11 @@
+#cloud-config
+runcmd:
+- apt-get update
+- apt-get install -y apt-transport-https jq software-properties-common
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+- add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+- apt-get update
+- apt-get -y install docker-ce=5:18.09.2~3-0~ubuntu-bionic
+- usermod -G docker -a ubuntu
+- echo '{"log-driver":"json-file","log-opts":{"max-size":"10m","max-file":"6"}}' | jq . > /etc/docker/daemon.json
+- systemctl restart docker && systemctl enable docker
